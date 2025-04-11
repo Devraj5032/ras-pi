@@ -2,8 +2,10 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const host = '0.0.0.0'; // allows access from any IP
 
-app.use(express.json()); // for parsing JSON bodies
+// Middleware to parse JSON bodies
+app.use(express.json());
 
 // GET route
 app.get('/', (req, res) => {
@@ -18,6 +20,7 @@ app.post('/echo', (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+// Start the server
+app.listen(port, host, () => {
+  console.log(`🚀 Server is running at http://${host}:${port}`);
 });
